@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Temp Converter</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <style>
+        * {
+            text-align: center;
+            box-sizing: border-box;
+        }
+        .jumbotron h1 {
+            color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+    <div class="jumbotron">
+        <h1>Convert Your Temperature</h1>
+        <form action="#" onsubmit="Convert()">
+            <label for="YourTemp">Enter your temperature and Type</label>
+            <input type="text" id="YourTemp">
+            <select name="Temps" id="YourTempType">
+                <option value="C">Celsius</option>
+                <option value="F">Fahrenheit</option>
+                <option value="K">Kelvin</option>
+                <option value="R">Rankine</option>
+                <option value="De">Delisle</option>
+                <option value="N">Newton</option>
+                <option value="Re">Réaumur</option>
+                <option value="Ro">Rømer</option>
+            </select>
+            <br>
+            <label for="WantTemp">Select the temperature you want</label>
+            <select name="Temps" id="WantTemp">
+                <option value="C">Celsius</option>
+                <option value="F">Fahrenheit</option>
+                <option value="K">Kelvin</option>
+                <option value="R">Rankine</option>
+                <option value="De">Delisle</option>
+                <option value="N">Newton</option>
+                <option value="Re">Réaumur</option>
+                <option value="Ro">Rømer</option>
+            </select>
+            <input type="submit" value="Convert!">
+        </form>
+        <p><span id="output"></span></p>
+    </div>
+    <script>
+        function Convert() {
+            event.preventDefault()
+            var output = document.getElementById('output');
+            var YourTemp = Number(document.getElementById('YourTemp').value);
+            var YourTempType = document.getElementById('YourTempType').value;
+            var WantTemp = document.getElementById('WantTemp').value;
+            var ItsCelsiusNow = '';
+            var converted = '';
+            
+            if (YourTempType == 'C') {
+                ItsCelsiusNow = YourTemp
+            };
+            if (YourTempType == 'F') {
+                ItsCelsiusNow = (YourTemp - 32) * 5/9
+            };
+            if (YourTempType == 'K') {
+                ItsCelsiusNow = YourTemp + 273.15
+            };
+            if (YourTempType == 'R') {
+                ItsCelsiusNow = (YourTemp - 491.67) * 5/9
+            };
+            if (YourTempType == 'De') {
+                ItsCelsiusNow = 100 - YourTemp * 2/3
+            };
+            if (YourTempType == 'N') {
+                ItsCelsiusNow = YourTemp * 100/33
+            };
+            if (YourTempType == 'Re') {
+                ItsCelsiusNow = YourTemp * 5/4
+            };
+            if (YourTempType == 'Ro') {
+                ItsCelsiusNow = (YourTemp - 7.5) * 40/21
+            };
+
+            if (WantTemp == 'C') {
+                output.innerHTML = 'Converted to ' + ItsCelsiusNow +'°C'
+            };
+            if (WantTemp == 'F') {
+                converted = ItsCelsiusNow * 9/5 + 32
+                output.innerHTML = 'Converted to ' + converted.toFixed(2) +'°F'
+            };
+            if (WantTemp == 'K') {
+                converted = ItsCelsiusNow + 273.15
+                output.innerHTML = 'Converted to ' + converted.toFixed(2) +'K'
+            };
+            if (WantTemp == 'R') {
+                converted = (ItsCelsiusNow + 273.15) * 9/5
+                output.innerHTML = 'Converted to ' + converted.toFixed(2) +'°R'
+            };
+            if (WantTemp == 'De') {
+                converted = (100 - ItsCelsiusNow) * 3/2
+                output.innerHTML = 'Converted to ' + converted.toFixed(2) +'°De'
+            };
+            if (WantTemp == 'N') {
+                converted = ItsCelsiusNow * 33/100
+                output.innerHTML = 'Converted to ' + converted.toFixed(2) +'°N'
+            };
+            if (WantTemp == 'Re') {
+                converted = ItsCelsiusNow * 4/5
+                output.innerHTML = 'Converted to ' + converted.toFixed(2) +'°Ré'
+            };
+            if (WantTemp == 'Ro') {
+                converted = ItsCelsiusNow * 21/40 + 7.5
+                output.innerHTML = 'Converted to ' + converted.toFixed(2) +'°Rø'
+            };
+
+        };
+    </script>
+</body>
+</html>
